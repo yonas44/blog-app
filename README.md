@@ -145,9 +145,8 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] Allow users to add post
+- [ ] Allow users to like and comment
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,7 +164,6 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
 
 If you like this project...
 
@@ -178,4 +176,4 @@ If you like this project...
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT) licensed.
+This project is [MIT](./MIT.md) licensed.
