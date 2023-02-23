@@ -1,0 +1,18 @@
+                                                                      Table "public.users"
+    Column     |              Type              | Collation | Nullable |              Default              | Storage  | Compression | Stats target | Description 
+---------------+--------------------------------+-----------+----------+-----------------------------------+----------+-------------+--------------+-------------
+ id            | bigint                         |           | not null | nextval('users_id_seq'::regclass) | plain    |             |              | 
+ name          | character varying              |           |          |                                   | extended |             |              | 
+ photo         | character varying              |           |          |                                   | extended |             |              | 
+ bio           | character varying              |           |          |                                   | extended |             |              | 
+ posts_counter | integer                        |           |          |                                   | plain    |             |              | 
+ created_at    | timestamp(6) without time zone |           | not null |                                   | plain    |             |              | 
+ updated_at    | timestamp(6) without time zone |           | not null |                                   | plain    |             |              | 
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "comments" CONSTRAINT "fk_rails_03de2dc08c" FOREIGN KEY ("AuthorId") REFERENCES users(id)
+    TABLE "likes" CONSTRAINT "fk_rails_1e09b5dabf" FOREIGN KEY ("AuthorId") REFERENCES users(id)
+    TABLE "posts" CONSTRAINT "fk_rails_5b5ddfd518" FOREIGN KEY ("AuthorId") REFERENCES users(id)
+Access method: heap
+
