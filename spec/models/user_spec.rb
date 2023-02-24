@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   before :all do
     @user1 = User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: 0)
     @user2 = User.create(name: '', photo: 'Photo here', bio: 'bio here', posts_counter: 0)
-    @user3 = User.create(name: '', photo: 'Photo here', bio: 'bio here', posts_counter: -1)
+    @user3 = User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: -1)
 
     @post1 = Post.create(author: @user1, title: 'This is my first post', text: 'This is text')
     @post2 = Post.create(author: @user1, title: 'This is my second post', text: 'This is text')
