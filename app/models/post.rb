@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  validate :title, presence: true, length: { maximum: 250 } 
+  validates :comments_counter, :likes_counter, comparison: { greater_than_or_equal_to: 0 }, numericality: { only_integer: true }
+
   after_initialize do |_post|
     update_user_post_counter unless Post.exists?(id: id)
   end
@@ -20,7 +23,6 @@ class Post < ApplicationRecord
   end
 
   def most_recent_comments(limit = 5)
-    p 'Hellooo'
     comments.order(created_at: :desc).limit(limit)
   end
 end
