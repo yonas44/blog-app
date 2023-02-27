@@ -8,7 +8,7 @@ class Post < ApplicationRecord
                                                numericality: { only_integer: true }
 
   after_initialize do |_post|
-    update_user_post_counter unless Post.exists?(id: id)
+    update_user_post_counter unless Post.exists?(id:)
   end
 
   def increment_likes_counter

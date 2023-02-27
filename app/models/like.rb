@@ -3,7 +3,7 @@ class Like < ApplicationRecord
   belongs_to :post
 
   after_initialize do |_like|
-    update_post_likes_counter unless Like.exists?(id: id)
+    update_post_likes_counter unless Like.exists?(id:)
   end
 
   def update_post_likes_counter
