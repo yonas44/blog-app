@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   after_initialize do |_post|
-    update_post_comments_counter unless Comment.exists?(id: id)
+    update_post_comments_counter unless Comment.exists?(id:)
   end
 
   def update_post_comments_counter
