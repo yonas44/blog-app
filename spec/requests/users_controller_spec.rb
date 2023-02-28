@@ -12,6 +12,9 @@ RSpec.describe 'Users', type: :request do
     it 'assigns a variable to be accessed in views' do
       expect(assigns(:users)).to eq(User.all)
     end
+    it 'has the correct response body text' do
+      expect(response.body).to include('Hello index here')
+    end
   end
 
   describe 'GET #show' do
@@ -24,6 +27,9 @@ RSpec.describe 'Users', type: :request do
     end
     it 'assigns a variable to be accessed in views' do
       expect(assigns(:user)).to eq(User.find_by(id: 1) || 'There is no user')
+    end
+    it 'has the correct response body text' do
+      expect(response.body).to include('Hello this is user show')
     end
   end
 end
