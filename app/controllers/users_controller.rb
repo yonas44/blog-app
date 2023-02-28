@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def index
-    puts User.all
+    @users = User.all
   end
 
   def show
-    puts User.where(id: params[:id])
+    @user = User.find_by(id: params[:id]) || 'There is no user'
   end
 end
