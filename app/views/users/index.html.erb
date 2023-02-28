@@ -1,1 +1,11 @@
 <h2>Hello index here</h2>
+
+<% if @users.empty? %>
+    <p><%= "There are no users to display" %></p>
+<% else %>
+    <% @users.each do |user| %>
+        <h4><%= user.name %></h4>
+        <p><%= user.bio %></p>
+        <p><%= user.id %></p>
+      <% end %>
+<% end %>

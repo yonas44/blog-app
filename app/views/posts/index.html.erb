@@ -1,1 +1,12 @@
 <h2>Hello posts index here</h2>
+
+<% if @posts.empty? %>
+    <p><%= "There is no post to display" %></p>
+<% else %>
+    <% @posts.each do |post| %>
+        <h4><%= post.title %></h4>
+        <p><%= post.text %></p>
+        <p><%= post.id %></p>
+      <% end %>
+<% end %>
+

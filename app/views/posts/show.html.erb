@@ -1,1 +1,9 @@
 <h2>Hello this is posts show</h2>
+
+<% if !@post.kind_of? String %>
+    <h4><%= @post.title %></h4>
+    <p><%= @post.text %></p>
+    <p><%= @post.id %></p>
+<% else %>
+    <p><%= @post %>
+<% end %>
