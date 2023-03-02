@@ -1,9 +1,17 @@
-<h2>Hello this is user show</h2>
+<% url = request.original_url %>
 
 <% if !@user.kind_of? String %>
-    <h4><%= @user.name %></h4>
-    <p><%= @user.bio %></p>
-    <p><%= @user.id %></p>
+    <%= render partial: "user", locals: { user: @user } %>
+    <div id="bio">
+        <h4>Bio</h4>
+        <p><%= @user.bio %></p>
+    </div>
+    <% @user.recent_posts.each_with_index do |post, index| %>
+        <div id="single_post">
+            <%= render partial: "/posts/post", locals: { post: post, index: index + 1, url: request.original_url + '/posts'} %>
+        </div>
+    <% end %>
+    <button id="show_all_posts"><%= link_to 'Show all posts', user_posts_path(user_id: @user.id) %></button>
 <% else %>
     <p><%= @user %>
 <% end %>

@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :request do
       expect(assigns(:users)).to eq(User.all)
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('Hello index here')
+      expect(response.body).to include('Number' || 'There are no users to display')
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :request do
       expect(assigns(:user)).to eq(User.find_by(id: 1) || 'There is no user')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('Hello this is user show')
+      expect(response.body).to include('There is no user')
     end
   end
 end

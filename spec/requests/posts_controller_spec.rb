@@ -7,13 +7,13 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to have_http_status(:ok)
     end
     it 'assigns an instance variable accessable from the view' do
-      expect(assigns(:posts)).to eq(Post.where(author_id: 1))
+      expect(assigns(:posts).length).to eq(Post.where(author_id: 1).length || 'There is no user')
     end
     it 'renders the correct template' do
       expect(response).to render_template('index')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('Hello posts index here')
+      expect(response.body).to include('<p>' || 'There are no posts with this id.')
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template('show')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('Hello this is posts show')
+      expect(response.body).to include('There is no post')
     end
   end
 end

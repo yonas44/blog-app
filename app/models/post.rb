@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  paginates_per 3
+
   validates :title, presence: true, length: { maximum: 250 }
   validates :comments_counter, :likes_counter, comparison: { greater_than_or_equal_to: 0 },
                                                numericality: { only_integer: true }

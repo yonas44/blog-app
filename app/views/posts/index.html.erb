@@ -1,12 +1,15 @@
-<h2>Hello posts index here</h2>
-
-<% if @posts.empty? %>
-    <p><%= "There is no post to display" %></p>
+<% if @posts.empty?%>
+    <p><%= @posts %></p>
 <% else %>
-    <% @posts.each do |post| %>
-        <h4><%= post.title %></h4>
-        <p><%= post.text %></p>
-        <p><%= post.id %></p>
-      <% end %>
+<%= render partial: "/users/user", locals: { user: @posts[0].author } %>
+<% @posts.each_with_index do |post, index| %>
+    <div id="single_post">
+        <%= render partial: "post", locals: { post: post, index: index + 1, url: request.path} %>
+        <% post.most_recent_comments.each do |comment| %>
+            <%= render partial: "comment", locals: { comment: comment} %>
+        <% end %>
+    </div>
+    <% end %>
+<%= paginate @posts %>
 <% end %>
 
