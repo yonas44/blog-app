@@ -1,9 +1,18 @@
-<h2>Hello this is posts show</h2>
-
 <% if !@post.kind_of? String %>
-    <h4><%= @post.title %></h4>
-    <p><%= @post.text %></p>
-    <p><%= @post.id %></p>
+    <div class="detailed_post">
+        <div id="post-container">
+            <div class="post-top-section">
+                <h4>Post #1 by <%= @post.author.name %></h4>
+                <p id="comments-likes">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
+            </div>
+            <p><%= @post.text %></p>
+        </div>
+        <div>
+            <% @post.comments.each do |comment| %>
+                <%= render partial: "comment", locals: { comment: comment } %>
+            <% end %>
+        </div>
+    </div>
 <% else %>
     <p><%= @post %>
 <% end %>

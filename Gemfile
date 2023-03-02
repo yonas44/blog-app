@@ -29,6 +29,8 @@ gem 'jbuilder'
 
 gem 'net-http'
 
+gem 'kaminari'
+
 gem 'rack'
 
 # Use Redis adapter to run Action Cable in production

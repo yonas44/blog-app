@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = User.find_by(id: params[:user_id])&.posts || []
+    @posts = Post.where(author_id: params[:user_id]).page params[:page] || 'There are no posts with this id.'
   end
 
   def show
