@@ -5,9 +5,11 @@
 <% @posts.each_with_index do |post, index| %>
     <div id="single_post">
         <%= render partial: "post", locals: { post: post, index: index + 1, url: request.path} %>
-        <% post.most_recent_comments.each do |comment| %>
-            <%= render partial: "comment", locals: { comment: comment} %>
-        <% end %>
+        <div class="comment_section">
+            <% post.most_recent_comments.each do |comment| %>
+                <%= render partial: "comment", locals: { comment: comment} %>
+            <% end %>
+        </div>
     </div>
     <% end %>
 <%= paginate @posts %>
