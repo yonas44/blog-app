@@ -5,12 +5,12 @@ class Post < ApplicationRecord
 
   paginates_per 3
 
-  validates :title, presence: true, length: { maximum: 250 }
+  validates :title, :text, presence: true, length: { maximum: 250 }
   validates :comments_counter, :likes_counter, comparison: { greater_than_or_equal_to: 0 },
                                                numericality: { only_integer: true }
 
-  after_initialize do |_post|
-    update_user_post_counter unless Post.exists?(id:)
+  after_create do |_post|
+    update_user_post_counter
   end
 
   def increment_likes_counter

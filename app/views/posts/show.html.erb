@@ -12,6 +12,12 @@
                 <%= render partial: "comment", locals: { comment: comment } %>
             <% end %>
         </div>
+        <div class="comment_like_holder">
+            <button id="add_comment"><%= link_to 'Add comment', new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id) %></button>
+            <%= form_with url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), scope: :data do |form| %>
+                <%= form.submit "Like" %>
+            <% end %>
+        </div>
     </div>
 <% else %>
     <p><%= @post %>

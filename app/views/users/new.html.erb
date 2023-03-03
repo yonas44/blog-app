@@ -1,0 +1,14 @@
+<h2>Create a new user</h2>
+
+<%= form_with model: @user do |form| %>
+  <li><%= form.label :"name:" %>
+  <%= form.text_field :name, :required=>true %>
+  </li>
+  <li id="input_bio"><%= form.label :"bio:" %>
+  <%= form.text_area :bio, :required=>true %>
+  </li>
+  <li><%= form.label :"photo(url):" %>
+  <%= form.text_field :photo, :required=>true %>
+  </li>
+    <%= form.submit "Register" %>
+<% end %>

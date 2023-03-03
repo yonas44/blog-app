@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template('index')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('<p>' || 'There are no posts with this id.')
+      expect(response.body).to include('There is no user with this id')
     end
   end
 
