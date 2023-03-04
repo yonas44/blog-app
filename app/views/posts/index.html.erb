@@ -1,7 +1,8 @@
-<% if @posts.empty?%>
-    <p><%= @posts %></p>
+<% if @user.nil? %>
+    <p>There is no user with this id</p>
 <% else %>
-<%= render partial: "/users/user", locals: { user: @posts[0].author } %>
+    <%= render partial: "/users/user", locals: { user: @user } %>
+<% end %> 
 <% @posts.each_with_index do |post, index| %>
     <div id="single_post">
         <%= render partial: "post", locals: { post: post, index: index + 1, url: request.path} %>
@@ -13,5 +14,3 @@
     </div>
     <% end %>
 <%= paginate @posts %>
-<% end %>
-
