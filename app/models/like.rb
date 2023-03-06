@@ -8,7 +8,7 @@ class Like < ApplicationRecord
 
   after_destroy do |_like|
     update_post_likes_counter(false)
-  end 
+  end
 
   def update_post_likes_counter(input)
     post.increment_likes_counter(input)
