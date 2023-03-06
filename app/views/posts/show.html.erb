@@ -1,3 +1,6 @@
+<% current_state = like_action_decider(@post, @current_user) %>
+
+
 <% if !@post.kind_of? String %>
     <div class="detailed_post">
         <div id="post-container">
@@ -13,11 +16,19 @@
             <% end %>
         </div>
         <div class="comment_like_holder">
-            <button id="add_comment"><%= link_to 'Add comment', new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id) %></button>
-            <%= form_with url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), scope: :data do |form| %>
-                <%= form.submit "Like" %>
+            <div class="commenter_section">
+                <img src= <%= @current_user.photo %> id="commenter_photo" />
+                <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.author.id, post_id: @post.id) do |form| %>
+                    <%= form.text_field :text, placeholder: "Message...", :required=>true %>
+                    </li>
+                    <%= form.submit "Add comment" %>
+                <% end %>
+            </div>
+            <%= form_with url: current_state[:url], method: :"#{current_state[:method]}" do |form| %>
+                <%= form.submit "#{current_state[:button_text]}" %>
             <% end %>
         </div>
+        
     </div>
 <% else %>
     <p><%= @post %>

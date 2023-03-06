@@ -3,10 +3,14 @@ class Like < ApplicationRecord
   belongs_to :post
 
   after_create do |_like|
-    update_post_likes_counter
+    update_post_likes_counter(true)
   end
 
-  def update_post_likes_counter
-    post.increment_likes_counter
+  after_destroy do |_like|
+    update_post_likes_counter(false)
+  end
+
+  def update_post_likes_counter(input)
+    post.increment_likes_counter(input)
   end
 end

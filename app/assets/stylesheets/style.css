@@ -54,6 +54,10 @@ body {
   text-decoration: none;
 }
 
+.error_msg {
+  display: block;
+}
+
 /* ------------------- Post ------------------------ */
 
 .detailed_post {
@@ -110,8 +114,14 @@ body {
 .comment_like_holder {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   gap: 15px;
+}
+
+.commenter_section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* -------------------- Comment ----------------------- */
@@ -135,7 +145,8 @@ body {
   align-items: center;
 }
 
-#comment_user_photo {
+#comment_user_photo,
+#commenter_photo {
   border-radius: 50%;
   width: 50px;
 }
@@ -159,7 +170,7 @@ body {
 
 /* ---------------------- Form --------------- */
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   list-style: none;
