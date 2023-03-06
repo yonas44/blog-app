@@ -1,6 +1,6 @@
 <h2>Create a new post</h2>
 
-<%= form_with model: @post, url: user_posts_path(user_id: @user.id) do |form| %>
+<%= form_with model: @post, url: user_posts_path(user_id: params[:user_id]), html: { class: "form" } do |form| %>
   <li id="input_title"><%= form.label :"title:" %>
   <%= form.text_field :title, :required=>true %>
   </li>

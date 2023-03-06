@@ -13,8 +13,10 @@ class Post < ApplicationRecord
     update_user_post_counter
   end
 
-  def increment_likes_counter
-    update(likes_counter: self.likes_counter += 1)
+  def increment_likes_counter(input)
+    return update(likes_counter: self.likes_counter += 1) if input
+
+    update(likes_counter: self.likes_counter -= 1)
   end
 
   def increment_comments_counter
