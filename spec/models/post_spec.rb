@@ -11,7 +11,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'increments likes_counter' do
-    @post1.increment_likes_counter
+    @post1.increment_likes_counter(true)
     expect(@post1.likes_counter).to eq 1
   end
 

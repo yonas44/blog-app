@@ -11,5 +11,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ActionDeciderHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.create(name: 'Yonas', bio: 'bio here', photo: 'Photo here') }
+  let(:post) { Post.create(author: user, title: 'Post title', text: 'Post text') }
+  it 'renders the correct object' do
+    expect(like_action_decider(post, user)[:button_text]).to include('Like')
+  end
 end

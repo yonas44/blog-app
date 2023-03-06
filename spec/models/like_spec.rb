@@ -10,7 +10,7 @@ RSpec.describe Like, type: :model do
   end
 
   it 'invokes a method to increment likes_counter in a post' do
-    @like.update_post_likes_counter
+    @like.update_post_likes_counter(true)
     expect(@post1.likes_counter).to eq 2
   end
 end
