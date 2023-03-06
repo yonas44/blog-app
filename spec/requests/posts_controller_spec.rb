@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
+  let(:user) { User.create(name: 'Yonas', bio: 'bio here', photo: 'Photo here') }
+  let(:post) { Post.create(author: user, title: 'Post title', text: 'Post text') }
+
   describe 'GET #index' do
     before(:example) { get '/users/1/posts' }
     it 'returns successful' do
@@ -18,18 +21,18 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET #show' do
-    before(:example) { get '/users/1/posts/3' }
+    before(:example) { get "/users/#{user.id}/posts/#{post.id}" }
     it 'returns successful' do
       expect(response).to have_http_status(:ok)
     end
     it 'assigns an instance variable accessable from the view' do
-      expect(assigns(:post)).to eq(Post.find_by(author_id: 1, id: 3) || 'There is no post')
+      expect(assigns(:post)).to eq(post)
     end
     it 'renders the correct template' do
       expect(response).to render_template('show')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('There is no post')
+      expect(response.body).to include('Post text')
     end
   end
 end
