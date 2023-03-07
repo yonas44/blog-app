@@ -8,7 +8,8 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @current_user = current_user
-    @post = Post.find_by(author_id: params[:user_id], id: params[:id]) || 'There is no post'
+    @post = Post.includes(:author, :comments, :likes).find_by(author_id: params[:user_id],
+                                                              id: params[:id]) || 'There is no post'
   end
 
   def new
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
     if @post.save
       flash[:success] = 'Post saved successfully'
-      redirect_to users_path
+      redirect_to user_posts_path(user)
     else
       flash[:success] = "Invalid input, post wasn't saved"
       redirect_to new_user_post_path(user_id: params[:user_id])

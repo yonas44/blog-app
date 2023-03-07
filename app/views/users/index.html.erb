@@ -4,7 +4,7 @@
     <p><%= "There are no users to display" %></p>
 <% else %>
     <% @users.each do |user| %>
-        <a href= <%= user_path(id: user.id) %> class="single_user">
+        <a href= <%= user_path(id: user.id) %> class="single_user" id= <%= user.name %>>
         <%= render partial: "user", locals: { user: user } %>
         </a>
       <% end %>

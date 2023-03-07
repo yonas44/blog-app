@@ -73,7 +73,7 @@ body {
   margin-top: auto;
 }
 
-#single_post {
+.single_post {
   display: flex;
   padding: 10px;
   gap: 20px;
@@ -103,7 +103,7 @@ body {
 }
 
 #show_all_posts a,
-#post_link,
+.post_link,
 .single_user,
 #create_post a,
 #add_comment a {

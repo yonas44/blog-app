@@ -5,7 +5,7 @@
     <div class="detailed_post">
         <div id="post-container">
             <div class="post-top-section">
-                <h4>Post #1 by <%= @post.author.name %></h4>
+                <h4><%= @post.title%>... by <%= @post.author.name %></h4>
                 <p id="comments-likes">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
             </div>
             <p><%= @post.text %></p>
@@ -21,7 +21,7 @@
                 <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.author.id, post_id: @post.id) do |form| %>
                     <%= form.text_field :text, placeholder: "Message...", :required=>true %>
                     </li>
-                    <%= form.submit "Add comment" %>
+                    <%= form.submit "Add comment", id: "add_comment_btn" %>
                 <% end %>
             </div>
             <%= form_with url: current_state[:url], method: :"#{current_state[:method]}" do |form| %>

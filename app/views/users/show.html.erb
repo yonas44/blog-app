@@ -7,7 +7,7 @@
         <p><%= @user.bio %></p>
     </div>
     <% @user.recent_posts.each_with_index do |post, index| %>
-        <div id="single_post">
+        <div id=<%= index %> class="single_post">
             <%= render partial: "/posts/post", locals: { post: post, index: index + 1, url: request.original_url + '/posts'} %>
         </div>
     <% end %>

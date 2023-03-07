@@ -122,9 +122,11 @@ To run the project, execute the following command:
 
 ### Run tests
 
-To run tests, run the following command:
+To run tests, run the following command accordingly:
 
-- `bin/rails test test/models/article_test.rb`
+- `rails db:seed RAILS_ENV=test`
+
+- `rspec`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,6 +140,11 @@ To run tests, run the following command:
 - GitHub: [@yonas44](https://github.com/yonas44)
 - LinkedIn: [Yonas Tesfu](https://linkedin.com/in/yonas-tesfu)
 
+👤 **Selma Hamutenya**
+
+- GitHub: [@SelmaNdapanda](https://github.com/SelmaNdapanda)
+- Twitter: [@SellohBlaq](https://twitter.com/sellohBlaq)
+- LinkedIn: [selma-hamutenya](www.linkedin.com/in/selma-hamutenya)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

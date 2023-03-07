@@ -3,8 +3,9 @@
 <% else %>
     <%= render partial: "/users/user", locals: { user: @user } %>
 <% end %> 
+<h3>List of all posts:</h3>
 <% @posts.each_with_index do |post, index| %>
-    <div id="single_post">
+    <div class="single_post">
         <%= render partial: "post", locals: { post: post, index: index + 1, url: request.path} %>
         <div class="comment_section">
             <% post.most_recent_comments.each do |comment| %>
