@@ -8,7 +8,8 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @current_user = current_user
-    @post = Post.includes(:author, :comments, :likes).find_by(author_id: params[:user_id], id: params[:id]) || 'There is no post'
+    @post = Post.includes(:author, :comments, :likes).find_by(author_id: params[:user_id],
+                                                              id: params[:id]) || 'There is no post'
   end
 
   def new
