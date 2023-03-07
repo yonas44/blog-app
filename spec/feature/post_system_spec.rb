@@ -6,6 +6,9 @@ RSpec.describe 'Posts', type: :system do
       # display a page
       visit users_path
 
+      # assert the displayed page
+      assert_text 'Katie'
+
       # navigate to the new post template
       click_on 'Katie'
 
@@ -23,6 +26,12 @@ RSpec.describe 'Posts', type: :system do
       # use pagination
       sleep(1)
       click_link 'Next'
+
+      # assert the displayed page
+      assert_text 'Yet another post..'
+      assert_text 'This is another post'
+      assert_text 'Comments: 0'
+      assert_text 'Prev'
 
       # select a post
       sleep(1)
@@ -46,6 +55,9 @@ RSpec.describe 'Posts', type: :system do
       # navigate to the posts page
       visit users_path
 
+      # assert the displayed page
+      assert_text 'Yonas'
+
       sleep(1)
       click_on 'Yonas'
 
@@ -55,6 +67,9 @@ RSpec.describe 'Posts', type: :system do
 
       sleep(1)
       click_on 'first'
+
+      # assert the displayed page
+      assert_text 'Katie'
 
       # add a comment
       sleep(1)

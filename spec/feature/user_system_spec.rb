@@ -6,6 +6,9 @@ RSpec.describe 'Users', type: :system do
       # display a page
       visit users_path
 
+      # assert the displayed page
+      assert_text 'Yonas'
+
       # navigate to the show page
       sleep(1)
       click_link(id: 'Yonas')
@@ -17,13 +20,21 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe 'shows detail page for a user' do
-    it 'displays the user created' do
+    it 'displays the user with their posts' do
       # display a all users
       visit users_path
+
+      # assert the displayed page
+      assert_text 'Yonas'
 
       # click on a user from the displayed page
       sleep(1)
       click_link(id: 'Yonas')
+
+      # assert the displayed page has a post with text 'second' and 'Show'
+      assert_text 'super'
+      assert_text 'second'
+      assert_text 'Show all posts'
 
       # click on a post from the list of posts
       sleep(1)
@@ -37,6 +48,9 @@ RSpec.describe 'Users', type: :system do
     it 'displays the index page of the post' do
       # display a all users
       visit users_path
+
+      # assert the displayed page
+      assert_text 'Yonas'
 
       # click on a user from the displayed page
       sleep(1)
