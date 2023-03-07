@@ -138,6 +138,11 @@ To run tests, run the following command:
 - GitHub: [@yonas44](https://github.com/yonas44)
 - LinkedIn: [Yonas Tesfu](https://linkedin.com/in/yonas-tesfu)
 
+👤 **Selma Hamutenya**
+
+- GitHub: [@SelmaNdapanda](https://github.com/SelmaNdapanda)
+- Twitter: [@SellohBlaq](https://twitter.com/sellohBlaq)
+- LinkedIn: [selma-hamutenya](www.linkedin.com/in/selma-hamutenya)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
