@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
     if @post.save
       flash[:success] = 'Post saved successfully'
-      redirect_to users_path
+      redirect_to user_posts_path(user)
     else
       flash[:success] = "Invalid input, post wasn't saved"
       redirect_to new_user_post_path(user_id: params[:user_id])
