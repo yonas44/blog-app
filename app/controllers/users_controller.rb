@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:posts).find_by(id: params[:id]) || 'There is no user'
+    @user = User.find_by(id: params[:id]) || 'There is no user'
   end
 
   def create
