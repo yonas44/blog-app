@@ -10,7 +10,7 @@
 body {
   width: 50%;
   margin: 0 auto;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -181,9 +181,10 @@ body {
   margin-bottom: auto;
 }
 
-form input[type=text],
+.input_fields,
 #user_bio {
   border: none;
+  width: 100%;
   padding: 5px;
   font-style: italic;
   border-bottom: 1px solid #000;
@@ -200,5 +201,50 @@ form input:focus {
 
 form input[type=submit] {
   width: fit-content;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  color: white;
+}
+
+/* Sign_up form */
+
+.sign_up_form_wrapper,
+.sign_in_form_wrapper {
+  margin: auto auto;
+  gap: 20px;
+  background-color: rgb(196, 126, 22);
+  padding: 80px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign_up_form,
+.sign_in_form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.sign_up_form_wrapper p,
+.sign_in_form_wrapper p {
+  margin: 0 auto;
+}
+
+#login_btn,
+#sign_in_btn {
+  margin: 0 auto;
+  width: fit-content;
+  padding: 10px 20px;
+}
+
+#login_btn a,
+#sign_in_btn a {
+  text-decoration: none;
+  color: black;
+  
 }
