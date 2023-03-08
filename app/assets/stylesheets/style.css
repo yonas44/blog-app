@@ -17,6 +17,25 @@ body {
   padding: 50px 0;
 }
 
+.alert {
+  background-color: red;
+  opacity: 0;
+  width: fit-content;
+  color: white;
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transform: translateY(-100%);
+  animation: slide forwards 1s ease-out;
+}
+
+@keyframes slide {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #user {
   border: 1px solid black;
   display: flex;
@@ -196,7 +215,6 @@ body {
 
 form input:focus {
   background-color: lightgray;
-  outline: none;
 }
 
 form input[type=submit] {
@@ -246,5 +264,4 @@ form input[type=submit] {
 #sign_in_btn a {
   text-decoration: none;
   color: black;
-  
 }
