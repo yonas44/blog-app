@@ -18,15 +18,17 @@ body {
 }
 
 .alert {
-  background-color: red;
+  background-color: rgba(182, 11, 11, 0.904);
   opacity: 0;
   width: fit-content;
   color: white;
+  position: absolute;
+  transition: all 1s;
   padding: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   transform: translateY(-100%);
-  animation: slide forwards 1s ease-out;
+  animation: slide normal 1s ease-out;
 }
 
 @keyframes slide {
@@ -112,8 +114,7 @@ body {
 }
 
 #show_all_posts,
-#create_post,
-#add_comment {
+#create_post {
   width: fit-content;
   border: none;
   border-radius: 5px;
@@ -141,6 +142,13 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+#delete_post_btn {
+  color: red;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* -------------------- Comment ----------------------- */
@@ -227,7 +235,7 @@ form input[type=submit] {
   color: white;
 }
 
-/* Sign_up form */
+/*------------------------------------- Sign_up form --------------------------*/
 
 .sign_up_form_wrapper,
 .sign_in_form_wrapper {
@@ -264,4 +272,14 @@ form input[type=submit] {
 #sign_in_btn a {
   text-decoration: none;
   color: black;
+}
+/* -------------------------- Sign in --------------------- */
+
+#log_out_btn {
+  border: none;
+  background-color: transparent;
+  display: block;
+  font-size: 1.2em;
+  margin-left: auto;
+  cursor: pointer;
 }

@@ -1,3 +1,6 @@
+  <% if can? :create, Post %>
+    <button id="create_post"><%= link_to 'Create post', new_user_post_path(current_user) %></button>
+  <% end %>
 <h3>List of all users</h3>
 <% if @users.empty? %>
     <p><%= "There are no users to display" %></p>

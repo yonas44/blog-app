@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  layout 'standard'
+  load_and_authorize_resource
+
+  # layout 'standard'
   def index
     @user = User.find_by(id: params[:user_id])
     @posts = Post.where(author_id: params[:user_id]).page params[:page] || 'There are no posts with this id.'
@@ -17,17 +19,22 @@ class PostsController < ApplicationController
   end
 
   def create
-    user = User.find_by(id: params[:user_id])
-    @post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
+    @post = Post.new(author: current_user, title: post_params[:title], text: post_params[:text])
     if @post.save
       flash[:success] = 'Post saved successfully'
-      redirect_to user_posts_path(user)
+      redirect_to user_posts_path(current_user)
     else
       flash[:success] = "Invalid input, post wasn't saved"
-      redirect_to new_user_post_path(user_id: params[:user_id])
+      redirect_to new_user_post_path(current_user)
     end
   end
 
+  def destroy
+    post = Post.find_by(author_id: current_user.id).destroy
+
+    flash[:success] = 'Post removed successfully'
+    redirect_to user_posts_path(current_user)
+  end
   private
 
   def post_params

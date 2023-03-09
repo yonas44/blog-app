@@ -12,6 +12,9 @@
                 <%= render partial: "comment", locals: { comment: comment} %>
             <% end %>
         </div>
+        <% if can? :destroy, post %>
+        <%= button_to "Delete", user_post_path(current_user, post), method: :delete, id: "delete_post_btn" %>
+        <% end %>
     </div>
     <% end %>
 <%= paginate @posts %>

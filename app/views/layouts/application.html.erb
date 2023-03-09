@@ -16,6 +16,11 @@
       <%= value %>
     </div>
   <% end %>
+
+  <% if user_signed_in? %>
+  <%= current_user.name %>
+  <%= button_to "log out", destroy_user_session_path, method: :delete, id: "log_out_btn" %>
+  <% end %>
   
   <%= yield %>
 
