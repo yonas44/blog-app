@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   # layout 'standard'
   def index
     @users = User.all
+
+    responds_to do |format|
+      format.html
+      format.json { :json => @users }
+      format.xml { :xml => @users }
+    end
   end
 
   def new
