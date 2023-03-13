@@ -2,19 +2,23 @@
     <p>There is no user with this id</p>
 <% else %>
     <%= render partial: "/users/user", locals: { user: @user } %>
-<% end %> 
-<h3>List of all posts:</h3>
-<% @posts.each_with_index do |post, index| %>
-    <div class="single_post">
-        <%= render partial: "post", locals: { post: post, index: index + 1, url: request.path} %>
-        <div class="comment_section">
-            <% post.most_recent_comments.each do |comment| %>
-                <%= render partial: "comment", locals: { comment: comment} %>
-            <% end %>
-        </div>
-        <% if can? :destroy, post %>
-        <%= button_to "Delete", user_post_path(current_user, post), method: :delete, id: "delete_post_btn" %>
+    <h3>List of all posts:</h3>
+    <% if @posts.empty? %>
+        <p>There are no posts by <strong><%= @user.name %></strong> currently.</p>
+    <% else %>
+        <% @posts.each do |post| %>
+            <div class="single_post">
+                <%= render partial: "post", locals: { post: post, user: @user} %>
+                <div class="comment_section">
+                    <% post.most_recent_comments.each do |comment| %>
+                        <%= render partial: "comment", locals: { comment: comment, post: } %>
+                    <% end %>
+                </div>
+                <% if can? :destroy, post %>
+                <%= button_to "Delete", user_post_path(current_user, post), method: :delete, id: "delete_post_btn" %>
+                <% end %>
+            </div>
         <% end %>
-    </div>
-    <% end %>
+    <% end %> 
+<% end %>
 <%= paginate @posts %>
