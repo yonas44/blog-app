@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let(:user) { User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: 0) }
+  let(:user) { User.create(name: 'Yonas', photo: 'Photo_here', bio: 'bio_here', email: "test3@gmail.com", password: '123123') }
 
   let(:post) { Post.create(author: user, title: 'This is my first post', text: 'This is text') }
 

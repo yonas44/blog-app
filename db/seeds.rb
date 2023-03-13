@@ -7,8 +7,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user = User.create(name: 'Yonas', photo: 'https://avatars.githubusercontent.com/u/72081991?v=4', bio: 'I am super user')
-user2 = User.create(name: 'Katie', photo: 'https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=7lrLYx-B', bio: 'Hello, Katie here..')
+user = User.create(name: 'Yonas', photo: 'https://avatars.githubusercontent.com/u/72081991?v=4', email: 'test@gmail.com', password: '123123', password_confirmation: '123123', bio: 'I am super user')
+user2 = User.create(name: 'Katie', photo: 'https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=7lrLYx-B', email: 'test2@gmail.com', password: '123123', password_confirmation: '123123', bio: 'Hello, Katie here..')
 
 post1 = Post.create(author: user, title: "My first post", text: "This is my first post...")
 post2 = Post.create(author: user, title: "My second post", text: "This is my second post...")
