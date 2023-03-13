@@ -9,12 +9,11 @@
 
 body {
   width: 50%;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 50px 0;
 }
 
 .alert {
@@ -36,6 +35,37 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.current_user_wrapper {
+  position: relative;
+}
+
+.current_user_options {
+  position: absolute;
+  font-size: 0.8em;
+  top: -30%;
+  padding: 10px 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: -1;
+  background-color: lightgray;
+  width: 100px;
+}
+
+.slide {
+  top: 100%;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+#current_user_photo {
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 #user {
@@ -86,7 +116,30 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+}
+
+#post-container {
+  font-size: 0.9em;
+}
+
+.post-owner-info {
+  display: flex;
+  gap: 10px;
+}
+
+.author_info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: initial;
+}
+
+#author-bio {
+  font-style: italic;
+  color: grey;
+  font-size: 0.85rem;
 }
 
 #post-count {
@@ -104,7 +157,7 @@ body {
 
 .post-top-section {
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .buttons_holder {
@@ -131,6 +184,18 @@ body {
   color: initial;
 }
 
+.post_link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9em;
+}
+
+#create_post {
+  display: block;
+  margin-left: auto;
+}
+
 .comment_like_holder {
   display: flex;
   align-items: center;
@@ -153,35 +218,62 @@ body {
 
 /* -------------------- Comment ----------------------- */
 
+.comment_info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
 #comments-likes {
   color: grey;
   text-align: end;
   margin-left: auto;
 }
 
+.comment_section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .single_comment {
   display: flex;
-  align-items: center;
   gap: 20px;
+  width: 100%;
 }
 
 .comment_user_profile {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: initial;
   justify-content: center;
   align-items: center;
 }
 
 #comment_user_photo,
-#commenter_photo {
+#commenter_photo,
+#post_owner_photo {
   border-radius: 50%;
   width: 50px;
+  margin-bottom: auto;
 }
 
 .comment_text_holder {
   display: flex;
+  padding: 10px;
+  background-color: lightgrey;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
+  width: 100%;
+}
+
+.commenter-name {
+  display: flex;
+  justify-content: space-between;
 }
 
 #created_at {
@@ -193,6 +285,24 @@ body {
 .comment_form {
   display: flex;
   gap: 5px;
+}
+
+#comment_text {
+  outline: none;
+  border: none;
+  margin-left: 5px;
+  background-color: transparent;
+  border-bottom: 1px;
+  font-style: italic;
+}
+
+#comment_delete_btn {
+  display: block;
+  margin-left: auto;
+  color: red;
+  background: transparent;
+  cursor: pointer;
+  border: none;
 }
 
 /* ---------------------- Form --------------- */
@@ -280,6 +390,58 @@ form input[type=submit] {
   background-color: transparent;
   display: block;
   font-size: 1.2em;
-  margin-left: auto;
+  transition: all 0.5s;
   cursor: pointer;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#log_out_btn:hover {
+  /* background-color: red;
+  border-radius: 5px;
+  color: white; */
+  color: red
+}
+
+header {
+  display: flex;
+  position: fixed;
+  left: 5%;
+  top: 0;
+  background-color: lightblue;
+  padding: 10px 20px;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px
+}
+
+#Home_btn {
+  text-decoration: none;
+  color: black;
+}
+
+#log_in_btn {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(74, 175, 74);
+  padding: 10px 20px;
+  width: fit-content;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+/* ------------------------ Footer ------------------------------ */
+
+footer {
+  display: block;
+  position: fixed;
+  bottom: 5px;
+  width: 100%;
+  left: 0;
+  text-align: center;
 }

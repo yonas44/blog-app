@@ -15,7 +15,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(author_id: current_user.id).destroy
+    like = Like.find_by(author_id: current_user.id)
+    like.post.decrement!(:likes_counter)
+    like.destroy
 
     flash[:success] = 'Likes removed successfully'
     redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id])

@@ -64,14 +64,14 @@ group :development, :test do
 
   gem 'rspec-rails'
 
+  gem 'cancancan'
+
   gem 'rails-controller-testing'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
-
-  gem 'cancancan'
 
   gem 'letter_opener'
 
