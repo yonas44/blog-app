@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  let(:user) { User.create(name: 'Yonas', bio: 'bio here', photo: 'Photo here') }
+  let(:user) do
+    User.create(name: 'Yonas', bio: 'bio here', photo: 'Photo here', email: 'test3@gmail.com', password: '123123')
+  end
   let(:post) { Post.create(author: user, title: 'Post title', text: 'Post text') }
 
   describe 'GET #index' do
@@ -16,7 +18,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template('index')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('There is no user with this id')
+      expect(response.body).to include('My first post')
     end
   end
 

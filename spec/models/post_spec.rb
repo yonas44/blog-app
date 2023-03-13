@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: 0) }
+  let(:user) do
+    User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', email: 'test3@gmail.com', password: '123123')
+  end
 
   let(:post1) { Post.create(author: user, title: 'This is my first post', text: 'This is text') }
   let(:post2) { Post.create(author: user, title: 'This is another post', text: 'This is text', comments_counter: -1) }

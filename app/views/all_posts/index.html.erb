@@ -1,0 +1,13 @@
+<h3>List of all posts:</h3>
+<% @posts.each do |post| %>
+    <div class="single_post">
+      <div class="post-owner-info">
+            <img src=<%= post.author.photo %> id="post_owner_photo" alt="post_owner_photo" />
+            <a href= <%= user_path(post.author) %> class="author_info">
+                <h3><%= post.author.name %></h3>
+                <p id="author-bio"><%= post.author.bio %></p>
+            </a>
+        </div>
+        <%= render partial: "posts/post", locals: { post: post, user: post.author} %>
+    </div>
+<% end %>

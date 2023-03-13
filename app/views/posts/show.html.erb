@@ -1,31 +1,36 @@
-<% current_state = like_action_decider(@post, @current_user) %>
-
-
-<% if !@post.kind_of? String %>
+<% unless @post.kind_of? String %>
     <div class="detailed_post">
+        <div class="post-owner-info">
+            <img src=<%= @post.author.photo %> id="post_owner_photo" alt="post_owner_photo" />
+            <a href= <%= user_path(@post.author) %> class="author_info">
+                <h3><%= @post.author.name %></h3>
+                <p id="author-bio"><%= @post.author.bio %></p>
+            </a>
+        </div>
         <div id="post-container">
             <div class="post-top-section">
-                <h4><%= @post.title%>... by <%= @post.author.name %></h4>
+                <h4><%= @post.title%></h4>
                 <p id="comments-likes">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
             </div>
             <p><%= @post.text %></p>
         </div>
-        <div>
+        <div class="comment_info">
             <% @post.comments.each do |comment| %>
-                <%= render partial: "comment", locals: { comment: comment } %>
+                <%= render partial: "comment", locals: { comment: , post: @post} %>
             <% end %>
         </div>
+        <% if user_signed_in? %>
         <div class="comment_like_holder">
             <div class="commenter_section">
-                <img src= <%= @current_user.photo %> id="commenter_photo" />
+                <img src= <%= current_user.photo %> id="commenter_photo" />
                 <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.author.id, post_id: @post.id) do |form| %>
-                    <%= form.text_field :text, placeholder: "Message...", :required=>true %>
-                    </li>
-                    <%= form.submit "Add comment", id: "add_comment_btn" %>
+                    <%= form.text_field :text, placeholder: "Message...", :required=>true, :value=>"" %>
                 <% end %>
             </div>
-            <%= form_with url: current_state[:url], method: :"#{current_state[:method]}" do |form| %>
-                <%= form.submit "#{current_state[:button_text]}" %>
+                <% current_state = like_action_decider(@post, current_user) %>
+                <%= form_with url: current_state[:url], method: :"#{current_state[:method]}" do |form| %>
+                    <%= form.submit "#{current_state[:button_text]}" %>
+                <% end %>
             <% end %>
         </div>
         

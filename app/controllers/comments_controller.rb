@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  layout 'standard'
-
   def new
     @comment = Comment.new
   end
@@ -17,6 +15,15 @@ class CommentsController < ApplicationController
       flash.now[:error] = "Error: couldn't save comment"
       render :new, alert: 'Error occured!'
     end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.post.decrement!(:comments_counter)
+    comment.destroy
+
+    flash[:success] = 'Comment deleted successfully'
+    redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 
   private

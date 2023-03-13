@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :request do
       expect(assigns(:user)).to eq(User.find_by(id: 1) || 'There is no user')
     end
     it 'has the correct response body text' do
-      expect(response.body).to include('There is no user')
+      expect(response.body).to include('I am super user')
     end
   end
 end

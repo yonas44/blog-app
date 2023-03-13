@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
-  layout 'standard'
+  load_and_authorize_resource
+
   def index
     @user = User.find_by(id: params[:user_id])
-    @posts = Post.where(author_id: params[:user_id]).page params[:page] || 'There are no posts with this id.'
+    @posts = Post.where(author_id: params[:user_id]).page params[:page]
   end
 
   def show
     @comment = Comment.new
-    @current_user = current_user
     @post = Post.includes(:author, :comments, :likes).find_by(author_id: params[:user_id],
                                                               id: params[:id]) || 'There is no post'
   end
@@ -17,15 +17,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    user = User.find_by(id: params[:user_id])
-    @post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
+    @post = Post.new(author: current_user, title: post_params[:title], text: post_params[:text])
     if @post.save
       flash[:success] = 'Post saved successfully'
-      redirect_to user_posts_path(user)
+      redirect_to user_posts_path(current_user)
     else
       flash[:success] = "Invalid input, post wasn't saved"
-      redirect_to new_user_post_path(user_id: params[:user_id])
+      redirect_to new_user_post_path(current_user)
     end
+  end
+
+  def destroy
+    post = Post.find_by(author_id: current_user.id)
+    post.author.decrement!(:posts_counter)
+    post.destroy
+
+    flash[:success] = 'Post removed successfully'
+    redirect_to user_posts_path(current_user)
   end
 
   private

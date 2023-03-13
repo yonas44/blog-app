@@ -1,19 +1,20 @@
-<% url = request.original_url %>
-
-<% if !@user.kind_of? String %>
+<% unless @user.kind_of? String %>
     <%= render partial: "user", locals: { user: @user } %>
     <div id="bio">
         <h4>Bio</h4>
         <p><%= @user.bio %></p>
     </div>
-    <% @user.recent_posts.each_with_index do |post, index| %>
-        <div id=<%= index %> class="single_post">
-            <%= render partial: "/posts/post", locals: { post: post, index: index + 1, url: request.original_url + '/posts'} %>
+    <% posts = @user.recent_posts %>
+     <% posts.each do |post| %>
+        <div class="single_post">
+            <%= render partial: "/posts/post", locals: { post: post, user: @user} %>
         </div>
     <% end %>
+    <% if posts.empty? %>
+        <p>There are no posts by <strong><%= @user.name %></strong> currently.</p>
+    <% end %>
     <div class="buttons_holder">
-        <button id="create_post"><%= link_to 'Create post', new_user_post_path(user_id: @user.id) %></button>
-        <% if !@user.posts.empty? %>
+        <% unless @user.posts.empty? %>
             <button id="show_all_posts"><%= link_to 'Show all posts', user_posts_path(user_id: @user.id) %></button>
         <% end %>
     </div> 

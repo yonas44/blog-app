@@ -16,8 +16,29 @@
       <%= value %>
     </div>
   <% end %>
+
+  <header>
+    <div class="nav-links">
+      <%= link_to "Home", users_path, id: "Home_btn" %>
+      <%= link_to "Posts", allposts_path, id: "Home_btn" %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="current_user_wrapper">
+        <img src=<%= current_user.photo %> id="current_user_photo" alt="current_user_photo" />
+        <div class="current_user_options">
+          <%= button_to "Profile", destroy_user_session_path, method: :delete, id: "log_out_btn" %>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, id: "log_out_btn" %>
+        </div>
+      </div>
+    <% end %>
+    <% if !user_signed_in? && request.env['PATH_INFO'] != new_user_session_path %>
+      <%= link_to "Login", new_user_session_path, id: "log_in_btn" %>
+    <% end %>
+  </header>
+    <% if user_signed_in? %>
+    <% end %>
   
   <%= yield %>
-
+  <footer>Created by Yonas Tesfu &copy 2023</footer>
   </body>
 </html>

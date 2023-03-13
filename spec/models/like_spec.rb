@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  let(:user) { User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: 0) }
+  let(:user) do
+    User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', email: 'test3@gmail.com', password: '123123')
+  end
 
   let(:post) { Post.create(author: user, title: 'This is my first post', text: 'This is text') }
 

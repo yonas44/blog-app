@@ -1,10 +1,13 @@
-<h3>List of all users</h3>
+<% if can? :create, Post %>
+  <button id="create_post"><%= link_to 'Create post', new_user_post_path(current_user) %></button>
+<% end %>
+<h3>List of all bloggers:</h3>
 <% if @users.empty? %>
-    <p><%= "There are no users to display" %></p>
+  <p>There are no users to display</p>
 <% else %>
     <% @users.each do |user| %>
-        <a href= <%= user_path(id: user.id) %> class="single_user" id= <%= user.name %>>
+      <a href= <%= user_path(user) %> class="single_user" id= <%= user.name %>>
         <%= render partial: "user", locals: { user: user } %>
-        </a>
-      <% end %>
+      </a>
+    <% end %>
 <% end %>

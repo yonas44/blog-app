@@ -1,10 +1,20 @@
 <div class="single_comment">
-    <div class="comment_user_profile">
+    <a href= <%= user_path(comment.author) %> class="comment_user_profile">
     <img id="comment_user_photo" src= <%= comment.author.photo %> alt="user_image" />
-    <p><%= comment.author.name %></p>
-    </div>
+    </a>
     <div class="comment_text_holder">
-        <p><%= comment.text %></p>
-        <p id="created_at"><%= comment.created_at %></p>
+        <a href= <%= user_path(comment.author) %> class="author_info">
+                <div class="commenter-name">
+                    <span><strong><%= comment.author.name %></strong></span>
+                    <span id="created_at"><%= ((Time.current - comment.created_at) / 60).round %>m</span>
+                </div>
+                <p id="author-bio"><%= post.author.bio %></p>
+        </a>
+        <div>
+            <p><%= comment.text %></p>
+            <% if can? :destroy, comment %>
+                <%= button_to "Delete", user_post_comment_path(params[:user_id], post, comment), method: :delete, id: "comment_delete_btn" %>
+            <% end %>
+        </div>
     </div>
 </div>

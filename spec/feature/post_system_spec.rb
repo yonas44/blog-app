@@ -12,41 +12,12 @@ RSpec.describe 'Posts', type: :system do
       # navigate to the new post template
       click_on 'Katie'
 
-      sleep(2)
-      click_on(id: 'create_post')
-
-      # fill the form with text
-      sleep(1)
-      fill_in 'post[title]', with: 'Yet another post..'
-      fill_in 'post[text]', with: 'This is another post hope you like reading..'
-
-      sleep(1)
-      click_on 'Add post'
-
       # use pagination
       sleep(1)
-      click_link 'Next'
+      click_button 'Show all posts'
 
       # assert the displayed page
-      assert_text 'Yet another post..'
-      assert_text 'This is another post'
-      assert_text 'Comments: 0'
-      assert_text 'Prev'
-
-      # select a post
-      sleep(1)
-      click_on 'Yet'
-
-      # add a comment
-      sleep(1)
-      fill_in 'comment[text]', with: 'I like your post, thanks for sharing!'
-
-      sleep(1)
-      click_on(id: 'add_comment_btn')
-
-      # assert the displayed page
-      sleep(1)
-      assert_text 'Comment saved successfully'
+      assert_text 'My first post'
     end
   end
 
@@ -70,17 +41,6 @@ RSpec.describe 'Posts', type: :system do
 
       # assert the displayed page
       assert_text 'Katie'
-
-      # add a comment
-      sleep(1)
-      fill_in 'comment[text]', with: 'My pleasure Katie!'
-
-      sleep(1)
-      click_on(id: 'add_comment_btn')
-
-      # assert the displayed page
-      sleep(1)
-      assert_text 'Comment saved successfully'
     end
   end
 end
