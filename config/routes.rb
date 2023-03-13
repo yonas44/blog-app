@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
   end
+
+  get '/allposts', to: 'all_posts#index'
   
   root to: 'users#index'
 end
