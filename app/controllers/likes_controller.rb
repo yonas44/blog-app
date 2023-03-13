@@ -1,6 +1,4 @@
 class LikesController < ApplicationController
-  layout 'standard'
-
   def create
     post = Post.find_by(id: params[:post_id])
     user = current_user
