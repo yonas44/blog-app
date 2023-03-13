@@ -11,7 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ActionDeciderHelper, type: :helper do
-  let(:user) { User.create(name: 'Yonas', bio: 'bio here', photo: 'https://avatars.githubusercontent.com/u/72081991?v=4', email: "test3@gmail.com", password: '123123') }
+  let(:user) { User.create(name: 'Yonas', bio: 'bio here', photo: 'https://avatars.githubusercontent.com/u/72081991?v=4', email: 'test3@gmail.com', password: '123123') }
   let(:post) { Post.create(author: user, title: 'Post title', text: 'Post text') }
   it 'renders the correct object' do
     expect(like_action_decider(post, user)[:button_text]).to include('Like')

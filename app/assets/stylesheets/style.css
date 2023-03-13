@@ -345,7 +345,7 @@ form input[type=submit] {
   color: white;
 }
 
-/*------------------------------------- Sign_up form --------------------------*/
+/* ------------------------------------- Sign_up form -------------------------- */
 
 .sign_up_form_wrapper,
 .sign_in_form_wrapper {
@@ -383,6 +383,7 @@ form input[type=submit] {
   text-decoration: none;
   color: black;
 }
+
 /* -------------------------- Sign in --------------------- */
 
 #log_out_btn {
@@ -400,7 +401,7 @@ form input[type=submit] {
   /* background-color: red;
   border-radius: 5px;
   color: white; */
-  color: red
+  color: red;
 }
 
 header {
@@ -417,7 +418,7 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 20px
+  gap: 20px;
 }
 
 #Home_btn {

@@ -5,7 +5,7 @@ RSpec.describe 'Posts', type: :system do
     it 'displays the post created' do
       # display a page
       visit users_path
- 
+
       # assert the displayed page
       assert_text 'Katie'
 

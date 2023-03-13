@@ -1,9 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user1) { User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', email: "test3@gmail.com", password: '123123') }
-  let(:user2) { User.create(name: '', photo: 'Photo here', bio: 'bio here', email: "test3@gmail.com", password: '123123') }
-  let(:user3) { User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: -1, email: "test3@gmail.com", password: '123123') }
+  let(:user1) do
+    User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', email: 'test3@gmail.com', password: '123123')
+  end
+  let(:user2) do
+    User.create(name: '', photo: 'Photo here', bio: 'bio here', email: 'test3@gmail.com', password: '123123')
+  end
+  let(:user3) do
+    User.create(name: 'Yonas', photo: 'Photo here', bio: 'bio here', posts_counter: -1, email: 'test3@gmail.com',
+                password: '123123')
+  end
 
   let(:post1) { Post.create(author: user1, title: 'This is my first post', text: 'This is text') }
   let(:post2) { Post.create(author: user1, title: 'This is my second post', text: 'This is text') }
